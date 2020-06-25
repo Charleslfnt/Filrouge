@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produits{% endblock %}
+
+{% block body %}
+    <h1>Produits </h1>
+
+    <table class="table  table-striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ produit.id }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ produit.proLibelle }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ produit.proDescription }}</td>
+            </tr>
+            <tr>
+                <th>Référence</th>
+                <td>{{ produit.proRef }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ produit.proPrix }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td><img src="/uploads/{{ produit.proPhoto }}" alt="photo" class="img-fluid"></td>
+            </tr>
+            <tr>
+                <th>Date d'ajout</th>
+                <td>{{ produit.proAjout ? produit.proAjout|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Nombre en stock</th>
+                <td>{{ produit.proStock }}</td>
+            </tr>
+            <tr>
+                <th>Envoyer une alerte à :</th>
+                <td>{{ produit.proStockAlert }}</td>
+            </tr>
+        </tbody>
+    </table>
+<div class="d-flex justify-content-center">
+    <div class="p-2"><a href="{{ path('produits_edit', {'id': produit.id}) }}"><button type="button" class="btn btn-primary">edit</button></a></div>
+    
+    <div class="p-2"><a href="{{ path('produits') }}"><button type="button" class="btn btn-primary">back to list</button></a></div>
+
+    <div class="p-2">{{ include('produits/_delete_form.html.twig') }}</div>
+    
+</div>
+
+
+{% endblock %}

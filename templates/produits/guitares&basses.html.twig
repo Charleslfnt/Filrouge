@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block title %}Guitares & Basses{% endblock %}
+
+{% block body %}
+    <h1>Guitares & Basses</h1>
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>libelle</th>
+                <th>description</th>
+                <th>ref</th>
+                <th>prix</th>
+                <th>photo</th>
+                <th>ajout</th>
+                <th>stock</th>
+                <th>stock alert</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        {% for produit in produits %}
+            <tr>
+                <td>{{ produit.id }}</td>
+                <td>{{ produit.proLibelle }}</td>
+                <td>{{ produit.proDescription }}</td>
+                <td>{{ produit.proRef }}</td>
+                <td>{{ produit.proPrix }}</td>
+                <td><img src="/uploads/{{ produit.proPhoto }}" alt="photo" class="img-fluid"></td>
+                <td>{{ produit.proAjout ? produit.proAjout|date('Y-m-d') : '' }}</td>
+                <td>{{ produit.proStock }}</td>
+                <td>{{ produit.proStockAlert }}</td>
+                <td>
+                    <a href="{{ path('cart_add', {'id': produit.id}) }}">Ajouter au panier</a>
+                    <a href="{{ path('produits_show', {'id': produit.id}) }}">show</a>
+                    
+                    <a href="{{ path('produits_edit', {'id': produit.id}) }}">edit</a>
+                    <a href="{{ include('produits/_delete_form.html.twig') }}"></a>
+                 
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('produits_new') }}"><button class="btn btn-primary"> Create new</button></a>
+    <br><br>
+{% endblock %}

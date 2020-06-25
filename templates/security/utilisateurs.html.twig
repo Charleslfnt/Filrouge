@@ -1,0 +1,53 @@
+{% extends "base.html.twig" %}
+
+    
+
+{% block body %}
+
+{% if app.user.userRole == ['ROLE_ADMIN'] %}
+  
+
+<h1 id="h1Tableau"> Tableau des Utilisateurs</h1>
+<div id="tableau">
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">ID</th>
+            <th scope="col">NOM</th>
+            <th scope="col">PRÉNOM</th>
+            <!--<th scope="col">PERSONNEL</th>-->
+            <th scope="col">TÉLÉPHONE</th>
+            <th scope="col">ADRESSE</th>
+          <!--  <th scope="col">DATE INSCRIPTION</th> -->
+            <th scope="col">COEF</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for Utilisateurs in utilisateurs %}  
+          <tr>
+            <th scope="row">1</th>
+            <td>{{ Utilisateurs.Id}}</td>
+            <td>{{ Utilisateurs.userName}}</td>
+            <td>{{ Utilisateurs.userFirstname}}</td>
+           <!-- <td>Utilisateurs.Personnel_I</td> -->
+            <td>{{ Utilisateurs.userPhone}}</td>
+            <td>{{ Utilisateurs.userAdresse}}</td>
+            <!--<td>Utilisateurs.userDateInscription</td>-->
+            <td>{{ Utilisateurs.userCoef}}</td>
+            
+            
+
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+{% else %}
+<br><br><br><br>
+<p>Vous n'êtes pas autorisé à accéder sur cette page</p>
+<a href="{{ path('home') }}">Retourner à l'accueil</a>
+{% endif %}
+
+
+{% endblock  %}

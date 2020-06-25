@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Récapitulatif de commande{% endblock %}
+
+{% block body %}
+{% if app.user %} 
+<h1>Informations de livraison</h1>
+
+<p>Où souhaitez-vous vous faire livrer ? </p>
+ {{ form_start(form) }}
+        
+        {{ form_row(form.com_adresse_livraison) }}
+        {{ form_row(form.type_paiement) }}
+      
+<button class="btn btn-success">Valider mes informations</button>
+    {{ form_end(form) }}
+     
+{% else %}
+<h1>Veuillez vous connecter afin de poursuivre vos achats</h1>
+<a href="{{ path('security_login') }}"></a>
+
+{% endif %}
+
+
+{% endblock %}

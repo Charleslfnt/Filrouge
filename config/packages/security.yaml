@@ -1,0 +1,53 @@
+security:
+    encoders:
+        #on indique dans quel entité chercher les utilisateurs 
+        App\Entity\Utilisateurs:
+            #Algorithme de hashage de mot de passe sur les utilisateurs 
+            algorithm:   'bcrypt' 
+         
+
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        users_in_memory: { memory: null }
+        in_database:
+            entity:
+                class: App\Entity\Utilisateurs
+                property: user_email
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: lazy
+            
+            provider: in_database
+
+            form_login:
+                login_path: app_login
+                check_path: app_login
+
+            logout:
+                path: app_logout
+                target: home
+            guard:
+                authenticators:
+                    - App\Security\UtilisateursAuthentificationAuthenticator
+
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+         - { path: ^/admin, roles: ROLE_ADMIN } #indique la page consultable uniquement avec le statut admin 
+         - { path: ^/profil, roles: ROLE_USER } #indique la page consultable uniquement avec le statut user ou supérieur 
+        
+#hiérarchie des utilisateurs 
+    role_hierarchy: 
+        ROLE_ADMIN: ROLE_USER  #Si j'ai le role Admin, j'ai aussi le role user 
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH] #Si j'ai le role Super Admin, j'ai aussi le rôle admin donc aussi le role user 
+

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification{% endblock %}
+
+{% block body %}
+    <h1>Changez vos informations :)</h1>
+
+    {{ include('registration/_register.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('home') }}">back to list</a>
+
+    
+{% endblock %}

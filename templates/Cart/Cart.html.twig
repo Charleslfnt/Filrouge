@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre Panier{% endblock %}
+
+{% block body %}
+
+{% if items | length > 0 %}
+<br><br><br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.produit.proLibelle }}</td>
+                <td>{{ item.produit.proPrix }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.produit.proPrix * item.quantity}}</td>
+                <td>
+                    <a href="{{ path('cart_remove', {'id': item.produit.id}) }}" class="btn btn-danger btn-md">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right">Total : </td>
+                <td>{{ total }}</td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+    <a href="{{ path('info_commande') }}">
+        <button class="btn btn-success btn-md">Commander et Payer</button>
+    </a>
+{% else %}
+<br><br>
+    <h3 style="color: black;">Surprise, c'est vide !</h3>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,38 @@
+Dictionnaire des données Fil Rouge
+
+                                        Une table produits :
+
+l'id du produit                     id                      int(11)
+le libelle du produit               pro_libelle             varchar(50)
+la catégorie du produit             pro_cat                 int(2)
+la description du produit           pro_description         varchar(255)
+la référence du produit             pro_ref                 varchar(50)
+le prix du produit                  pro_prix                int(11)
+la photo du produit                 pro_photo               varchar(255)
+la date d'ajout du produit          pro_ajout               date
+le stock du produit                 pro_stock               int(10)
+
+                                        Une table catégories
+
+l'id de la catégorie                id                     int(11)
+le nom de la catégorie              cat_name               varchar(50)
+
+                                        Une table Utilisateurs
+                            
+l'id de l'Utilisateurs              id                     int(11)
+le nom de l'Utilisateurs            user_name              varchar(50)
+le prénom de l'Utilisateurs         user_firstname         varchar(50)
+le mail de l'Utilisateurs           user_email             varchar(50)
+le mot de passe de l'Utilisateurs   user_password          varchar(20)
+le téléphone de l'Utilisateurs      user_phone             varchar(10)
+le role de l'Utilisateurs           user_role              varchar(1)
+
+                                        Une table Fournisseurs
+
+L'id du Fournisseur                 id                     int(20)
+le nom du Fournisseur               four_name              varchar(50)
+la rue du Fournisseur               four_rue               varchar(50)
+le code postal du Fournisseur       four_postal            int(11)
+la ville du Fournisseur             four_ville             varchar(50)
+le téléphone du Fournisseur         four_phone             varchar(10)
+l'émail du Fournisseur              four_email             varchar(50)

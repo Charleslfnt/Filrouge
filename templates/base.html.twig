@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor eos voluptatem sit quasi fugit reiciendis repudiandae at placeat optio quos minima aspernatur nobis corrupti ea nostrum, voluptas modi veritatis! Accusantium, cumque neque quasi voluptas facilis esse omnis laboriosam quo commodi placeat maxime eius incidunt praesentium ullam quia dolore, tempore doloremque.."/>
+	<link rel="canonical" href="http://www.demo.freshdesignweb.com/web-hosting-templates-css3.html" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css">
+    {% block stylesheet %} <link rel="stylesheet" href="/css/style.css"> {% endblock %}
+    <title>{% block title %} Village Green {% endblock %}</title>
+</head>
+
+<body class="container root" style="background:url('/img/background_village.png')">
+    <div class="wrap m-0 p-0">
+        <header class="col-12 px-0">
+            <div class="container p-0">
+                <div class="col-12 p-0">
+                    <div class="row m-0 d-bk" style="background:url('/img/header/3_bandes.png')">
+                        <figure class="col-md-2 col-lg-2 d-none d-md-block p-0 ">
+                            <a class="navbar-brand" href="{{path('home')}}" title="Vers l'accueil de Village Green">
+                                <img class="d-inline-blocks" src="/img/header/logo_village_green.png" alt="logo de l'entreprise village green" title="logo">
+                            </a>
+                        </figure>
+                        <div class="col-md-9 col-xs-12 p-0 ml-auto d-sm-none d-sm-block">
+                            <!--première nav-->
+                            <nav class="navbar navbar-expand-sm firstNav px-0 py-0">
+                                <span class="d-sm-none title-nav-service mr-auto pl-4">Rubrique Client</span>
+                                <a class="navbar-brand" href="#"></a>
+                                <button class="navbar-toggler mr-2 my-2 c-icon-button" type="button" data-toggle="collapse" data-target="#target1" aria-controls="target1" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon c-icon"></span>
+                                </button>
+                                <div class="collapse navbar-collapse pl-0" id="target1">
+                                    <ul class="navbar-nav ml-auto pt-3 mr-2">
+                                    
+                                      
+                                        <!--<li class="nav-item active col-xs-3"><a class="nav-link pl-4" href="#">Administration</a></li>-->
+                                        {% if app.user %}
+                                          <a href="{{path('app_profil')}}"><li style="color: black;">{{ app.user.username }}</li></a>  
+                                          {% else %}          
+                                        <div class="dropdown nav-link active col-5">
+                                            <a href="{{ path('app_login') }}">
+                                            <button type="button" data-toggle="dropdown" class="">Espace Client<span class="void"></span>
+                                            </button>
+                                            </a>  
+
+                                        </div>
+                                        {% endif %}
+                                        <!--STORE-->
+                                        <li class="nav-item col-2 pr-5 nav-link active pl-4">
+                                            <a class="" href="{{ path('cart_index') }}">
+                                                <img title="boutique de Village Green" src="/img/header/picto_panier.png" alt="boutique">
+                                            </a>
+                                        </li>
+                                        <!--menu bootstap langue-->
+                                        <li class="nav-link active px-4 col-2">
+                                            <img title="choisir sa langue" src="/img/header/picto_pays.png" alt="choisir sa langue">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="d-sm-none d-sm-block">
+                                <!--second barre-->
+                                <nav class="navbar navbar-expand-sm navbar-dark secondNav px-0 py-0 ">
+                                    <span class="d-sm-none title-nav-aide mr-auto pl-4">Rubrique Aide</span>
+                                    <a class="navbar-brand" href="#"></a>
+                                    <button class="navbar-toggler mr-2 my-2" type="button" data-toggle="collapse" data-target="#target2" aria-controls="target2" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span class="navbar-toggler-icon"></span>
+                                    </button>
+                                    <div class="collapse navbar-collapse pl-0" id="target2">
+                                        <ul class="navbar-nav ml-auto pl-0 pr-0">
+                                             <div class="d-flex flex-row-reverse">
+                                                    <!--<li class="nav-item active col-xs-3"><a class="nav-link pl-4" href="#">Administration</a></li>-->
+
+
+                                                    <a href="{{path('produits')}}"> <div class="p-2">   <li class="nav-item active col-xs-3">Produits</li></div></a>
+
+                                                    <a href="{{path('service')}}"> <div class="p-2">   <li class="nav-item active col-xs-3">Services</li></div></a>
+
+                                                    <a href="{{path('help')}}"> <div class="p-2">   <li class="nav-item active col-xs-3">Aide</li></div></a>
+
+                                                    <a href="{{path('about')}}"> <div class="p-2">   <li class="nav-item active col-xs-3">A propos</li></div></a>
+												
+                                                    <div class="p-2">  <a href="admin"><li class="nav-item active col-xs-3">Administration</li></a>  </div>
+                                         </div>
+                                            
+
+                                        </ul>
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="row ml-0 mr-0">
+                        <!--3ème barre-->
+                        <nav class="navbar navbar-expand-xl navbar-dark thirdNav col-xl-12 align-bottom px-0 py-0">
+                            <span class="d-sm-none title-nav-produits mr-auto pl-4">Rubrique Produits</span>
+                            <a class="navbar-brand" href="#"></a>
+                            <button class="navbar-toggler mr-2 my-2" type="button" data-toggle="collapse" data-target="#target3" aria-controls="target3" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse pl-0" id="target3">
+                                <ul class="navbar-nav ml-auto pl-0 pr-0 m-0">
+                                    <li class="nav-item active col-xs-1"><a class="nav-link" href="{{path('guitares&basses')}}">Guit/Bass</a></li>
+                                 	<li class="nav-item active col-xs-1"><a class="nav-link pl-4" href="/" title="Batteries">Batteries</a></li>
+                                    <li class="nav-item active col-xs-1"><a class="nav-link pl-4" href="/" title="Claviers">Clavier</a></li>
+                                    <li class="nav-item active col-xs-1"><a class="nav-link pl-4" href="/" title="Studios">Studio</a></li>
+                                    <li class="nav-item active col-xs-1"><a class="nav-link pl-4" href="/" title="Eclairages">Eclairage</a> </li>
+                                    <li class="nav-item active col-xs-1"><a class="nav-link pl-4" href="/" title="DJ">DJ</a></li>
+                                    <li class="nav-item active col-xs-1"><a class="nav-link pl-4" href="/" title="Cases">Cases</a></li>
+                                    <li class="nav-item active col-xs-1"><a class="nav-link pl-4" href="/" title="Accessoires">Accessoires</a></li>
+                                    <li class="nav-item active col-xs-1"><a class="nav-link pl-4" href="/" title="Accessoires">Instruments à vents</a></li>   
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        {% block body %} {% endblock %}<!-- le body commence ici sur les views -->
+
+		<footer class="" style="background:url('/img/background_village.png')">
+			<div class="row pl-2 pt-sm-3">
+				<form class="form-group col-sm-4" action="/" method="POST">
+					<label class="col-sm-12 pl-2" for="newsletter">Recevez&nbsp;<span class="c-custom">nos offres exclusives</span></label>
+					<div class="row ml-1 form-group">
+						<input class="col-auto col-sm-12 col-md-12 col-lg-6 mr-1 form-control" type="text" placeholder="Entre votre adresse mail" id="newsletter">
+						<button type="submit" class="mt-sm-1 mt-lg-0 col-auto col-sm-12 col-md-6 col-lg-4 btn btn-custom">S'abonner</button>		
+					</div>
+				</form>
+
+				<hr class="d-sm-none d-sm-block">
+
+				<div class="block-follow col-sm-4 text-center">
+					<p class="text-follow">Suivez nous&nbsp;<span class="c-custom">par ici !</span></p>
+					<a href="https://fr-fr.facebook.com" rel="nofollow" target="_blank" class="px-2">
+						<img src="/img/footer/picto_facebook.png" alt="facebook" title="nous suivre sur facebook">	
+					</a>
+					<a href="https://twitter.com/login?lang=fr" rel="nofollow" target="_blank" class="px-2">
+						<img src="/img/footer/picto_twitter.png" alt="twitter" title="nous suivre sur twitter">		
+					</a>
+				</div>
+
+				<!--<div class="d-none d-sm-block block-logo col-sm-4">
+					<img class="img-fluid" src="img/footer/visa.png" alt="visa">
+					<img class="img-fluid" src="img/footer/paypal3.png" alt="paypal">
+					<img class="img-fluid" src="img/footer/chrono_poste.png" alt="chrono poste">
+				</div> -->
+			</div>
+
+			<section class="row res-other ml-1">
+				<div class="d-none d-sm-block col-sm-6 col-md-3 annexe">
+					<h3>Contactez nous !</h3>
+					<ul class="pl-0">
+						<li class="txt-bold">Conseil • Commande téléphone</li>
+						<li class="txt-light">du lundi au vendredi de 8h à 19h, le samedi de 10h à 18h.</li>
+					</ul>
+					<ul class="pl-0">
+						<li class="txt-light">Depuis la France&nbsp;:&nbsp;</li>
+						<li class="txt-bold">02 40 38 50 50</li>
+					</ul>
+					<ul class="pl-0">
+						<li class="txt-light">Belgique, Suisse, International&nbsp;:&nbsp;</li>
+						<li class="txt-bold">0033 2 40 38 50 50</li>
+					</ul>
+					<ul class="pl-0">
+						<li class="txt-light">Service après vente&nbsp;:&nbsp;</li>
+						<li class="txt-bold">02 51 80 68 76</li>
+					</ul>
+
+					<p class="par-ann">Contactez-nous par téléphone du lundi au samedi de 9h à 18h ou depuis votre compte client.</p>
+
+					<ul class="pl-0">
+						<li class="txt-bold">Conseils pour choisir un instrument&nbsp;:&nbsp;</li>
+						<li class="txt-light">infovg[at]villagegreen[dot]com</li>
+					</ul>
+					<ul class="pl-0">
+						<li class="txt-bold">Service Presse&nbsp;:&nbsp;</li>
+						<li class="txt-light">contact[at]villagegreen[dot]com</li>
+					</ul>
+				</div>
+				<div class="d-none d-sm-block col-sm-6 col-md-3 annexe">
+					<h3>Village Green Stores</h3>
+					<ul class="pl-0">
+						<li class="txt-bold">Ouverts de 10h à 19h30 non-stop.</li>
+					</ul>
+					<ul class="pl-0">
+						<li class="txt-light">Guitares • Amplificateurs • Effets&nbsp;:&nbsp;</li>
+						<li class="txt-light">182 avenue Jean Jaurès</li>
+						<li class="txt-light">75019 Paris</li>
+					</ul>
+					<ul class="pl-0">
+						<li class="txt-light">Librairie Musicale&nbsp;:&nbsp;</li>
+						<li class="txt-light">7 av. du Nouveau Conservatoire</li>
+						<li class="txt-light">75019 Paris</li>
+					</ul>
+					<ul class="pl-0">
+						<li class="txt-light">Instruments à vent&nbsp;:&nbsp;</li>
+						<li class="txt-light">9/11 av. du Nouveau Conservatoire</li>
+						<li class="txt-light">75019 Paris</li>
+					</ul>
+					<ul class="pl-0">
+						<li class="txt-light">Percussions&nbsp;:&nbsp;</li>
+						<li class="txt-light">13/15 av. du Nouveau Conservatoire</li>
+						<li class="txt-light">75019 Paris</li>
+						<li class="txt-light">Métro Ligne 5, station Porte de Pantin.</li>
+					</ul>
+					<!--fil d'arianne-->
+					<nav aria-label="Breadcrumb" class="fil-arianne">
+						<ul class="pl-0">
+							<li><a class="link-arianne" href="/">Plan d'accès</a>&nbsp;/&nbsp;</li>
+							<li><a class="link-arianne" href="/">Visite virtuelle</a></li>
+						</ul>
+					</nav>
+				</div>
+				<div class="d-none d-md-block col-md-3 annexe">
+					<h3>Utiles&nbsp;!</h3>
+					<p class="txt-light">Qui sommes nous&nbsp;?</p>
+					<p class="txt-light">F.A.Q</p>
+					<p class="txt-light">Le blog Village Green</p>
+					<p class="txt-light">Vous avez un site Internet&nbsp;?</p>
+					<p class="txt-light">Devenez partenaire Village Green</p>
+					<p class="txt-light">Conditions générales de vente</p>
+					<p class="txt-light">Mentions légales</p>
+					<p class="txt-light">Plan du site</p>
+					<p class="txt-light">Parrainage</p>
+					<p class="txt-light">Nouveautés</p>
+					<p class="txt-light">Assurance Woodbrass[dot]com</p>
+					<p class="txt-light">Location d'instruments de musique</p>
+				</div>
+				<div class="d-none d-md-block col-md-3 annexe">
+					<h3>Village Green Preservation Society</h3>
+					<p class="txt-light">Toute l'actualité musicale</p>
+					<p class="txt-light">Voir l'avis des musiciens</p>
+					<p class="txt-light">Concours : inscription et résultat... à vous de jouer&nbsp;!</p>
+				</div>
+			</section>
+
+			<section class="row cite pt-sm-2 pt-md-0 mt-4">
+				<p class="col-sm-12">Village Green est une entreprise 100% Made in France&nbsp;!</p>
+				<p class="col-sm-12">Magasin de musique - Achat / Vente instruments de musique - Location instruments de musique - Atelier de réparation - Vente accessoires de musique au meilleur prix.</p>
+				<p class="col-sm-12">1989-2016 - RCS Paris B 222 333 444 Déclaration CNIL : 12345678.</p>
+			</section>
+			<section class="row mt-2 marque col-sm-12 pt-2">
+				<h3 class="col-sm-12">Guitares - Amplis / Effets - Claviers / Pianos - Synthés - Batteries / Percussions - Vents - Violons - Home Studio - Sonorisation - Deejay - Éclairage - Micros - Casques - Enregistreurs - Lifestyle - Déstockage - Ecoles & Pros</h3>
+				<p class="col-sm-12">Behringer - Bose - Conservatoire de musique de Paris - Fender - Focusrite Scarlett - Focusrite - Gibson 2016 - Gibson - Guitar Shop - Guitare Martin - Guitare Taylor - Guitare classique - Guitare folk - Guitare électrique IK Multimedia - Luthier Paris - Magasin DJ Paris - Magasin instruments de musique Paris - Magasin sonorisation Paris - Microphone USB - Musique - Namm - Partition alto - Partition clarinette - Partition flute - Partition guitare Partition harmonica - Partition musique - Partition piano - Partition saxophone - Partition trombone - Partition trompette - Partition vibraphone - Partition violon - Partition xylophone - Piano pas cher - Pioneer DJ - Platine vinyle Site internet DJ - Site internet Deejay - Site internet Violon - Sono Behringer - Tablature guitare - Tablatures - Ukulele - Vente sono - Yamaha RS - batterie débutant</p>
+			</section>
+        </footer>
+        </div>
+        
+        
+
+		{% block javascripts %}
+
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js" ></script>
+	<!--<script src="<?php echo base_url("assets/js/main/")."app.js" ;?>" ></script>-->
+	{% endblock %}
+</body>
+</html>
+		
+	

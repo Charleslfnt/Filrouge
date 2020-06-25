@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block body %}
+<br><br><br>
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            <h3 style="color: black;">Vous êtes connecté en tant que : {{ app.user.username }}.</h3> 
+        <ol>
+           <li style="color: black;">Nom : {{app.user.userFirstname}}</li> 
+           <br>
+           <li style="color: black;">Émail : {{app.user.useremail}}</li>
+           <br>
+           <li style="color: black;">Adresse : {{app.user.useradresse}}</li>
+        </ol>
+             <a href="{{ path('app_logout') }}"><button class="btn btn-danger">Déconnexion</button></a>
+             <a href="{{ path('profil_edit', {'id': app.user.id}) }}"><button class="btn btn-warning">Modifier mes informations</button></a>
+        </div>
+    {% endif %}
+
+{% endblock %}

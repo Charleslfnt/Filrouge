@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <h1>Création du compte</h1>
+
+    {{ form_start(registrationFormType) }}
+        {{ form_row(registrationFormType.user_name) }}
+        {{ form_row(registrationFormType.user_firstname) }}
+        {{ form_row(registrationFormType.user_adresse) }}
+        {{ form_row(registrationFormType.user_email) }}
+        {{ form_row(registrationFormType.user_phone) }}
+        {{ form_row(registrationFormType.Personnel) }}
+        {{ form_row(registrationFormType.plainPassword) }}
+        {{ form_row(registrationFormType.agreeTerms) }}
+
+        <button class="btn">Créer mon compte !</button>
+    {{ form_end(registrationFormType) }}
+    
+{% endblock %}
