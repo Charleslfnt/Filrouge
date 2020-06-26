@@ -19,8 +19,8 @@
            <br>
            <li style="color: black;">Adresse : {{app.user.useradresse}}</li>
         </ol>
-             <a href="{{ path('app_logout') }}"><button class="btn btn-danger">Déconnexion</button></a>
-             <a href="{{ path('profil_edit', {'id': app.user.id}) }}"><button class="btn btn-warning">Modifier mes informations</button></a>
+             <button class="btn btn-danger"><a href="{{ path('app_logout') }}">Déconnexion</a></button>
+             <button class="btn btn-warning"><a href="{{ path('profil_edit', {'id': app.user.id}) }}">Modifier</a></button>
         </div>
     {% endif %}
 

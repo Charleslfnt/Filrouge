@@ -4,7 +4,7 @@
 
 {% block body %}
 
-{% if app.user.userRole == ['ROLE_ADMIN'] %}
+{% if app.user.userRole == 1 %}
   
 
 <h1 id="h1Tableau"> Tableau des Utilisateurs</h1>
@@ -44,7 +44,6 @@
       </table>
 </div>
 {% else %}
-<br><br><br><br>
 <p>Vous n'êtes pas autorisé à accéder sur cette page</p>
 <a href="{{ path('home') }}">Retourner à l'accueil</a>
 {% endif %}

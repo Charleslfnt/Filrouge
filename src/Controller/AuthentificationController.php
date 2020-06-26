@@ -2,11 +2,15 @@
 
 namespace App\Controller;
 
+use App\Form\RegistrationFormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Security\UtilisateursAuthentificationAuthenticator;
+use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AuthentificationController extends AbstractController
 {
@@ -38,22 +42,48 @@ class AuthentificationController extends AbstractController
     }
 
     /**
-     * @Route("/profil", name="app_profil", methods={"GET","POST"}))
+     * @Route("/profil/", name="app_profil", methods={"GET","POST"}))
      */
     public function profil(AuthenticationUtils $authenticationUtils)
     {
+        
         $error = $authenticationUtils->getLastAuthenticationError();
-        return $this->render('security/profil.html.twig', ['error' => $error]);
+        return $this->render('security/profil.html.twig', [
+            'error' => $error,
+            ]);
         
     }
 
      /**
-     * @Route("/modification", name="profil_edit",  methods={"GET","POST"}))
+     * @Route("/profil/modif/{id}", name="profil_edit",  methods={"GET","POST"}))
      */
-    public function editProfil(AuthenticationUtils $authenticationUtils)
+    public function editProfil(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, UtilisateursAuthentificationAuthenticator $authenticator)
     {
         $error = $authenticationUtils->getLastAuthenticationError();
-        return $this->render('security/editUser.html.twig', ['error' => $error]);
+        $user = new Utilisateurs(); //indique la la table utilisateurs va être utilisé en tant qu'objet
+        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // encode the plain password
+            $user->setUserPassword(     // donne un mot de passe crypté pour la sécurité
+                $passwordEncoder->encodePassword(
+                    $user,
+                    $form->get('plainPassword')->getData() //obtient la donnée
+                )
+
+            );
+            $user->setUserDateInscription(new \DateTime()); //ajoute la date d'inscription de l'utilisateur
+
+
+            $entityManager = $this->getDoctrine()->getManager(); //contient toute la requête
+            $entityManager->persist($user); //force la requête
+            $entityManager->flush(); //envoi le tout dans la bdd
+
+        }
+        return $this->render('security/editUser.html.twig', [
+            'registrationFormType' => $form->createView(),
+            'error' => $error]);
         
     }
 

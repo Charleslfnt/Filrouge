@@ -36,7 +36,7 @@ class Produits
     private $pro_ref;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
     private $pro_prix;
 
