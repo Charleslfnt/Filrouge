@@ -14,11 +14,11 @@
 <body class="container root" style="background:url('/img/background_village.png')">
     <div class="wrap m-0 p-0">
         <header class="col-12 px-0">
-            <div class="container p-0">
-                <div class="col-12 p-0">
-                    <div class="row m-0 d-bk" style="background:url('/img/header/3_bandes.png')">
-                        <figure class="col-md-2 col-lg-2 d-none d-md-block p-0 ">
-                            <a class="navbar-brand" href="{{path('home')}}" title="Vers l'accueil de Village Green">
+            <div class="container p-0"> <!--Contient tout le container du header -->
+                <div class="col-12 p-0"><!--utilise 12 colonnes-->
+                    <div class="row m-0 d-bk" style="background:url('/img/header/3_bandes.png')"> <!--Le background du site-->
+                        <figure class="col-md-2 col-lg-2 d-none d-md-block p-0 "> <!--médium et large utilise 2 colonnes si plus petit ça disparaît-->
+                            <a class="navbar-brand" href="{{path('home')}}" title="Vers l'accueil de Village Green"> <!--Le logo est cliquable et mène à l'accueil-->
                                 <img class="d-inline-blocks" src="/img/header/logo_village_green.png" alt="logo de l'entreprise village green" title="logo">
                             </a>
                         </figure>
@@ -33,8 +33,7 @@
                                 <div class="collapse navbar-collapse pl-0" id="target1">
                                     <ul class="navbar-nav ml-auto pt-3 mr-2">
                                     
-                                      
-                                        <!--<li class="nav-item active col-xs-3"><a class="nav-link pl-4" href="#">Administration</a></li>-->
+        
                                         {% if app.user %}
                                           <a href="{{path('app_profil')}}"><li style="color: black;">{{ app.user.username }}</li></a>  
                                           {% else %}          
@@ -70,19 +69,19 @@
                                     <div class="collapse navbar-collapse pl-0" id="target2">
                                         <ul class="navbar-nav ml-auto pl-0 pr-0">
                                              <div class="d-flex flex-row-reverse">
-                                                    <!--<li class="nav-item active col-xs-3"><a class="nav-link pl-4" href="#">Administration</a></li>-->
+                                            
+													<div class="p-2"><a href="{{path('produits')}}"> <li class="nav-item active col-xs-3">Produits</li></a></div>
 
+													<div class="p-2"><a href="{{path('service')}}"> <li class="nav-item active col-xs-3">Services</li></a></div>
 
-                                                    <a href="{{path('produits')}}"> <div class="p-2">   <li class="nav-item active col-xs-3">Produits</li></div></a>
+													<div class="p-2"><a href="{{path('help')}}"> <li class="nav-item active col-xs-3">Aide</li></a></div>
 
-                                                    <a href="{{path('service')}}"> <div class="p-2">   <li class="nav-item active col-xs-3">Services</li></div></a>
-
-                                                    <a href="{{path('help')}}"> <div class="p-2">   <li class="nav-item active col-xs-3">Aide</li></div></a>
-
-                                                    <a href="{{path('about')}}"> <div class="p-2">   <li class="nav-item active col-xs-3">A propos</li></div></a>
-												
-                                                    <div class="p-2">  <a href="admin"><li class="nav-item active col-xs-3">Administration</li></a>  </div>
-                                         </div>
+													<div class="p-2"> <a href="{{path('about')}}"><li class="nav-item active col-xs-3">A propos</li></a></div>
+												{% if app.user and app.user.userRole == 1 %}
+												<div class="p-2"> <a href="admin"><li class="nav-item active col-xs-3">Administration</li></a></div>
+												{% endif %}
+													
+                                         	</div>
                                             
 
                                         </ul>
@@ -252,10 +251,10 @@
         
 
 		{% block javascripts %}
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js" ></script>
-	<!--<script src="<?php echo base_url("assets/js/main/")."app.js" ;?>" ></script>-->
 	{% endblock %}
 </body>
 </html>

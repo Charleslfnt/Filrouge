@@ -1,119 +1,50 @@
 {% extends 'base.html.twig' %}
+
 {% block title %}Produits index{% endblock %}
 
 {% block body %}
-  <title>Produits</title>
-  <body>
-  <div class="container-fluid">
-  <div style="text-align:center;">
-  
-  </div>
-  
-  {% for produit in produits %}
- 
-  <div id="plans" class="clearfix container-fluid">
-  
-              <div class="plan" id="border-left">
-  
-                  <div class="name">{{ produit.proLibelle }}</div>
-  
-                  <div class="price">{{ produit.proPrix }} €</div>
-  
-                  <div><a href="{{ path('cart_add', {'id': produit.id}) }}"><img src="/uploads/{{ produit.proPhoto }}" alt="photo" class="img-fluid"></a></div>
-  
-                  <div><a href="{{ path('cart_add', {'id': produit.id}) }}">Ajouter</a></div>
-                  
-  
-                  
-  
-              </div>
+    <h1>Produits index</h1>
 
-              <div class="plan" id="border-left">
-  
-                <div class="name">{{ produit.proLibelle }}</div>
+    <table class="table">
+        <thead>
+            <tr>
 
-                <div class="price">{{ produit.proPrix }} €</div>
+                <th>libelle</th>
+                <th>description</th>
+                <th>ref</th>
+                <th>prix</th>
+                <th>photo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for produit in produits %}
+            <tr>
 
-                <div><a href="{{ path('produits_show', {'id': produit.id}) }}"><img src="/uploads/{{ produit.proPhoto }}" alt="photo" class="img-fluid"></a></div>
+                <td>{{ produit.proLibelle }}</td>
+                <td>{{ produit.proDescription }}</td>
+                <td>{{ produit.proRef }}</td>
+                <td>{{ produit.proPrix }}</td>
+                <td><img src="/uploads/{{ produit.proPhoto }}" alt="photo" class="img-fluid"></td>
+                <td>
+                    <a href="{{ path('produits_show', {'id': produit.id}) }}"><button class="btn btn-primary">show</button></a>
+                    {% if app.user %}
 
-                <div><a href="{{ path('cart_add', {'id': produit.id}) }}">Ajouter</a></div>
-                
+                    {% if app.user.userRole == 1 %}
+                    <a href="{{ path('produits_edit', {'id': produit.id}) }}"><button class="btn btn-secondary">edit</button></a>
+                    <a href="{{ include('produits/_delete_form.html.twig') }}"></a>
+                    {% endif %}
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-                
-
-            </div>
-
-            <div class="plan" id="border-left">
-  
-                <div class="name">{{ produit.proLibelle }}</div>
-
-                <div class="price">{{ produit.proPrix }} €</div>
-
-                <div><a href="{{ path('produits_show', {'id': produit.id}) }}"><img src="/uploads/{{ produit.proPhoto }}" alt="photo" class="img-fluid"></a></div>
-
-                <div><a href="{{ path('cart_add', {'id': produit.id}) }}">Ajouter</a></div>
-               
-
-                
-
-            </div>
-
-            <div class="plan" id="border-left">
-  
-                <div class="name">{{ produit.proLibelle }}</div>
-
-                <div class="price">{{ produit.proPrix }} €</div>
-
-                <div><a href="{{ path('produits_show', {'id': produit.id}) }}"><img src="/uploads/{{ produit.proPhoto }}" alt="photo" class="img-fluid"></a></div>
-
-                <div><a href="{{ path('cart_add', {'id': produit.id}) }}">Ajouter</a></div>
-               
-
-                
-
-            </div>
-
-            <div class="plan" id="border-left">
-  
-                <div class="name">{{ produit.proLibelle }}</div>
-
-                <div class="price">{{ produit.proPrix }} €</div>
-
-                <div><a href="{{ path('produits_show', {'id': produit.id}) }}"><img src="/uploads/{{ produit.proPhoto }}" alt="photo" class="img-fluid"></a></div>
-
-                <div><a href="{{ path('cart_add', {'id': produit.id}) }}">Ajouter</a></div>
-                
-
-                
-
-            </div>
-
-            
-  
- </div>
-
-
-
- 
-
-
-
-    
-
-
-
-
- {% else %}
- <tr>
-     <td colspan="10">no records found</td>
- </tr>
-{% endfor %}
-<a href="{{ path('produits_new') }}"><button class="btn btn-primary"> Ajouter un produit</button></a>
-</div>
-
-{% block javascript %}
-<script src="{{ asset('/js/produits.js') }}"></script>
-{% endblock %}
-
-
+    <a href="{{ path('produits_new') }}"><button class="btn btn-primary"> Create new</button></a>
+    <br><br>
 {% endblock %}

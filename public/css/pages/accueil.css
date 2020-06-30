@@ -3,19 +3,19 @@ ul, li {
 	display: inline;
 }
 ul li a {
-	text-decoration:none;
+	text-decoration:none; 
 	font-size:large;
 }
 figure{
-	z-index:1;
+	z-index:1; /*permet de préciser l'empilement de certains éléments d'une page, c'est-à-dire sur l'axe vertical*/
 	top:0;
-	position:relative;
+	position:relative; /*L'élément est positionné dans le flux normal du document puis décalé, par rapport à lui-même, selon les valeurs fournies par top, right, bottom et left*/
 	display:block;}
 
-[title="logo"]{
+[title="logo"]{ /* logo village green */
 	width:125%;
 	height:auto;
-	position:absolute;
+	position:absolute; /*L'élément est retiré du flux normal et aucun espace n'est créé pour l'élément sur la page*/
 	top:0;}
 
 /*	images	*/

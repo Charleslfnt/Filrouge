@@ -1,21 +1,7 @@
-/*
 
-<!> 	Doublons possibles, à purgée a la fin
-<info> 	Page CSS Main, regroupe les règles générale appliquée aux sites
-		Ainsi que les media query
-
-
-*/
-/*=0*/
-/*@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Cardo&display=swap');*/
-/*@import url('pages/form.css');*/
 @import url('pages/layouts.css');
 @import url('pages/accueil.css');
-@import url('pages/templateTable.css');
-/*@import url('pages/produits.css');
-@import url('pages/assistance.css');
-@import url('pages/administration.css');*/
+
 
 
 .fontAwesome {
@@ -33,32 +19,27 @@
 	min-width:100%;}
 
 body{
-	overflow-x:hidden;
+	overflow-x:hidden; /* cache le débordement*/
 	background:url("img/background_village.png");
-	background-repeat:no-repeat;
-	z-index:1;}
+	background-repeat:no-repeat; /*empêche le background d'être appelé plusieurs fois */
+	z-index:1;} /*permet de préciser l'empilement de certains éléments d'une page, c'est-à-dire sur l'axe vertical*/
 
 .wrap{
 	background-color:var(--new-b-second);
-	z-index:2;}
+	z-index:2;} /*permet de préciser l'empilement de certains éléments d'une page, c'est-à-dire sur l'axe vertical*/
 
 .pictogrammes {
 	width: 100%;
 }
 
-a {
-
-}
-
-
 
 /*	Typographie	*/
 h1,h2{
-	text-indent:30px;
+	text-indent:30px; /*définit la longueur qui doit être laissée avant le début de la première ligne d'un élément contenant du texte.*/
 	color:navy;font-size:2rem;}
 
 [alt]{
-	transition:all .2s;
+	transition:all .2s; /*Elle permet de définir la transition entre deux états d'un élément*/
 	display:inline-flex;}
 
 .Panier {
@@ -75,7 +56,7 @@ h1,h2{
 	}
 
 	header>.container {
-		margin-left: auto !important;
+		margin-left: auto !important;  /* !important signifie que ce code doit absolument s'appliquer pour le container qui est dans le header*/
 		margin-right: auto !important;
 		padding-right: 15px;
 		padding-left: 15px;
@@ -203,7 +184,7 @@ h1,h2{
 @media (min-width:320px) and (max-width:575px) {
 	
 	.d-bk {
-		background-image:none !important;
+		background-image:none !important; /* enlève le background du site */
 		background-color: #d6d6d6 !important;}
 
 	.res-vitrine,.res-offre,.res-top,.res-top>figure,h2 {
