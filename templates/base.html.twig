@@ -35,12 +35,10 @@
                                     
         
                                         {% if app.user %}
-                                          <a href="{{path('app_profil')}}"><li style="color: black;">{{ app.user.username }}</li></a>  
+                                          <a href="{{path('app_profil')}}"><li id="liName">{{ app.user.username }}</li></a>  
                                           {% else %}          
                                         <div class="dropdown nav-link active col-5">
-                                            <a href="{{ path('app_login') }}">
-                                            <button type="button" data-toggle="dropdown" class="">Espace Client<span class="void"></span>
-                                            </button>
+                                            <a href="{{ path('app_login') }}" id="espaceClient">Espace Client<span class="void"></span>
                                             </a>  
 
                                         </div>
@@ -101,15 +99,15 @@
                             </button>
                             <div class="collapse navbar-collapse pl-0" id="target3">
                                 <ul class="navbar-nav ml-auto pl-0 pr-0 m-0">
-                                    <li class="nav-item active col-xs-1"><a class="nav-link" href="{{path('guitares&basses')}}">Guit/Bass</a></li>
-                                 	<li class="nav-item active col-xs-1"><a class="nav-link pl-4" href="/" title="Batteries">Batteries</a></li>
-                                    <li class="nav-item active col-xs-1"><a class="nav-link pl-4" href="/" title="Claviers">Clavier</a></li>
-                                    <li class="nav-item active col-xs-1"><a class="nav-link pl-4" href="/" title="Studios">Studio</a></li>
-                                    <li class="nav-item active col-xs-1"><a class="nav-link pl-4" href="/" title="Eclairages">Eclairage</a> </li>
-                                    <li class="nav-item active col-xs-1"><a class="nav-link pl-4" href="/" title="DJ">DJ</a></li>
-                                    <li class="nav-item active col-xs-1"><a class="nav-link pl-4" href="/" title="Cases">Cases</a></li>
-                                    <li class="nav-item active col-xs-1"><a class="nav-link pl-4" href="/" title="Accessoires">Accessoires</a></li>
-                                    <li class="nav-item active col-xs-1"><a class="nav-link pl-4" href="/" title="Accessoires">Instruments à vents</a></li>   
+                                    <li class="nav-item active col-xs-1"><a class="nav-link" href="{{path('produits')}}">Guit/Bass</a></li>
+                                 	<li class="nav-item active col-xs-1"><a class="nav-link pl-4" href="{{path('produits')}}">Batteries</a></li>
+                                    <li class="nav-item active col-xs-1"><a class="nav-link pl-4" href="{{path('produits')}}">Clavier</a></li>
+                                    <li class="nav-item active col-xs-1"><a class="nav-link pl-4" href="{{path('produits')}}">Studio</a></li>
+                                    <li class="nav-item active col-xs-1"><a class="nav-link pl-4" href="{{path('produits')}}">Eclairage</a> </li>
+                                    <li class="nav-item active col-xs-1"><a class="nav-link pl-4" href="{{path('produits')}}" title="DJ">DJ</a></li>
+                                    <li class="nav-item active col-xs-1"><a class="nav-link pl-4" href="{{path('produits')}}" title="Cases">Cases</a></li>
+                                    <li class="nav-item active col-xs-1"><a class="nav-link pl-4" href="{{path('produits')}}" title="Accessoires">Accessoires</a></li>
+                                    <li class="nav-item active col-xs-1"><a class="nav-link pl-4" href="{{path('produits')}}" title="Accessoires">Instruments à vents</a></li>   
                                 </ul>
                             </div>
                         </nav>
@@ -141,11 +139,7 @@
 					</a>
 				</div>
 
-				<!--<div class="d-none d-sm-block block-logo col-sm-4">
-					<img class="img-fluid" src="img/footer/visa.png" alt="visa">
-					<img class="img-fluid" src="img/footer/paypal3.png" alt="paypal">
-					<img class="img-fluid" src="img/footer/chrono_poste.png" alt="chrono poste">
-				</div> -->
+			
 			</div>
 
 			<section class="row res-other ml-1">

@@ -53,7 +53,7 @@ class CartController extends AbstractController
         $commande = new Commandes();
         $form = $this->createForm(CommandesType::class, $commande);
         $form->handleRequest($request);
-        $client = "";
+        //$client = "1";
  
 
         if ($form->isSubmitted() && $form->isValid()) { 
@@ -61,7 +61,7 @@ class CartController extends AbstractController
             $commande->setComDate(new \DateTime());
             $commande->setComObs("En cours");
             $commande->setTypePaiement(1);
-           // $commande->setClient($client);
+         // $commande->setClient($client);
             
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($commande);

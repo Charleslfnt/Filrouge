@@ -3,15 +3,11 @@
 {% block title %}Produits{% endblock %}
 
 {% block body %}
-    <h1>Produits </h1>
+    <h1>{{ produit.proLibelle }}</h1>
 
     <table class="table  table-striped">
         <tbody>
         
-            <tr>
-                <th>Libelle</th>
-                <td>{{ produit.proLibelle }}</td>
-            </tr>
             <tr>
                 <th>Description</th>
                 <td>{{ produit.proDescription }}</td>
@@ -26,22 +22,31 @@
             </tr>
             <tr>
                 <th>Image</th>
-                <td><img src="/uploads/{{ produit.proPhoto }}" alt="photo" class="img-fluid"></td>
+                <td>/<img src="/uploads/{{ produit.proPhoto }}" alt="photo" class="img-fluid imgProduit"><td>
             </tr>
            
+            {% if app.user.userRole == 1 %}
             <tr>
                 <th>Nombre en stock</th>
                 <td>{{ produit.proStock }}</td>
             </tr>
+            {% endif %}
+         
             
         </tbody>
     </table>
 <div class="d-flex justify-content-center">
-    <div class="p-2"><a href="{{ path('produits_edit', {'id': produit.id}) }}"><button type="button" class="btn btn-primary">edit</button></a></div>
     
-    <div class="p-2"><a href="{{ path('produits') }}"><button type="button" class="btn btn-primary">back to list</button></a></div>
+                {% if app.user.userRole == 1 %}
+                <div class="p-2"><a href="{{ path('produits_edit', {'id': produit.id}) }}"><button type="button" class="btn btn-primary">edit</button></a></div>
+                <div class="p-2">{{ include('produits/_delete_form.html.twig') }}</div>
+                {% endif %}
+               
+  
+    
+    <div class="p-2"><a href="{{ path('produits') }}"><button type="button" class="btn btn-primary">Retour à la liste</button></a></div>
 
-    <div class="p-2">{{ include('produits/_delete_form.html.twig') }}</div>
+    
     
 </div>
 

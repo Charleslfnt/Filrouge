@@ -1,20 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Produits index{% endblock %}
+{% block title %}Catalogue{% endblock %}
 
 {% block body %}
-    <h1>Produits index</h1>
+    <h1>Notre catalogue</h1>
 
     <table class="table">
         <thead>
             <tr>
 
                 <th>libelle</th>
-                <th>description</th>
-                <th>ref</th>
-                <th>prix</th>
-                <th>photo</th>
-                <th>actions</th>
+                <th class="tdDescription">Description</th>
+                <th>Référence</th>
+                <th>Prix</th>
+                <th>Photo</th>
+                <th class="">Actions</th>
+               
             </tr>
         </thead>
         <tbody>
@@ -22,29 +23,29 @@
             <tr>
 
                 <td>{{ produit.proLibelle }}</td>
-                <td>{{ produit.proDescription }}</td>
+                <td class="tdDescription">{{ produit.proDescription }}</td>
                 <td>{{ produit.proRef }}</td>
-                <td>{{ produit.proPrix }}</td>
-                <td><img src="/uploads/{{ produit.proPhoto }}" alt="photo" class="img-fluid"></td>
-                <td>
-                    <a href="{{ path('produits_show', {'id': produit.id}) }}"><button class="btn btn-primary">show</button></a>
+                <td>{{ produit.proPrix }} €</td>
+                <td> <a href="{{ path('produits_show', {'id': produit.id}) }}"><img src="/uploads/{{ produit.proPhoto }}" alt="photo" class="img-fluid imgProduit"></a></td>
+                <td class="">
+                    <div><a href="{{ path('cart_add', {'id': produit.id}) }}"><img src="/img/header/picto_panier.png" alt="panier" class="img-fluid "></a></div>
                     {% if app.user %}
 
                     {% if app.user.userRole == 1 %}
-                    <a href="{{ path('produits_edit', {'id': produit.id}) }}"><button class="btn btn-secondary">edit</button></a>
-                    <a href="{{ include('produits/_delete_form.html.twig') }}"></a>
+                    <a href="{{ path('produits_edit', {'id': produit.id}) }}"><button class="btn btn-secondary tdActions">Éditer</button></a>
+                    <div class="tdActions">{{ include('produits/_delete_form.html.twig') }}</div>
                     {% endif %}
                     {% endif %}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="10">no records found</td>
+                <td colspan="10">Aucun produit dans la base de données</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('produits_new') }}"><button class="btn btn-primary"> Create new</button></a>
+    <div><a href="{{ path('produits_new') }}"><button class="btn btn-primary">Créer un produit</button></a></div>
     <br><br>
 {% endblock %}

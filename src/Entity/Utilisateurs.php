@@ -71,15 +71,7 @@ class Utilisateurs implements UserInterface
 
 
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $user_ref;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $user_type;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -245,29 +237,7 @@ class Utilisateurs implements UserInterface
         return $this;
     }
 
-    public function getUserRef(): ?string
-    {
-        return $this->user_ref;
-    }
-
-    public function setUserRef(string $user_ref): self
-    {
-        $this->user_ref = $user_ref;
-
-        return $this;
-    }
-
-    public function getUserType(): ?bool
-    {
-        return $this->user_type;
-    }
-
-    public function setUserType(bool $user_type): self
-    {
-        $this->user_type = $user_type;
-
-        return $this;
-    }
+   
 
     public function getUserAdresse(): ?string
     {

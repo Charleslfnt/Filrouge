@@ -34,7 +34,8 @@ class RegistrationController extends AbstractController
 
             );
             $user->setUserDateInscription(new \DateTime()); //ajoute la date d'inscription de l'utilisateur
-
+            $user->setUserRole(0);
+            $user->setUserCoef(0);
 
             $entityManager = $this->getDoctrine()->getManager(); //contient toute la requête
             $entityManager->persist($user); //force la requête
